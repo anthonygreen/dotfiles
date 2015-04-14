@@ -9,6 +9,8 @@ export MAVEN_OPTS="$MAVEN_OPTS \
   -Dhttps.nonProxyHosts=localhost|national.core.bbc.co.uk|*.sandbox.dev.bbc.co.uk \
 "
 
+export M2_HOME=/usr/local/Cellar/maven/3.3.1/libexec/
+
 if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh  ]; then
 .  /usr/local/etc/bash_completion.d/git-prompt.sh 
 fi
