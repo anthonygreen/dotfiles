@@ -1,1 +1,1 @@
-export PATH="/opt/homebrew-cask/Caskroom:/usr/local/Cellar:$PATH"
+export PATH="/opt/homebrew-cask/Caskroom:/usr/local/Cellar:/usr/local/bin:$PATH"
