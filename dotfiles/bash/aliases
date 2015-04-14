@@ -1,0 +1,66 @@
+alias rk='bundle exec rake'
+alias buke='bundle exec cucumber'
+alias cuke='cucumber'
+# alias svn='colorsvn'
+alias gemi='gem install --no-rdoc --no-ri'
+alias intellij='open "/Applications/IntelliJ IDEA 12.app/"'
+alias rm='trash'
+
+function onreith {
+  set-reith-proxies
+  echo 'onreith' > ~/.reith_status
+}
+
+function offreith {
+  unset-reith-proxies
+  echo 'offreith' > ~/.reith_status
+}
+
+function set-reith-proxies {
+  http_proxy=http://www-cache.reith.bbc.co.uk:80 
+  no_proxy='10.*,.gateway.bbc.co.uk,.core.bbc.co.uk,localhost,127.0.0.1,localhost.*.bbc.co.uk' 
+  
+  HTTP_PROXY=$http_proxy 
+  https_proxy=$http_proxy 
+  HTTPS_PROXY=$https_proxy 
+  NO_PROXY=$no_proxy
+  
+  export http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
+  export no_proxy NO_PROXY
+}
+
+function unset-reith-proxies {
+  unset http_proxy
+  unset no_proxy
+  
+  unset HTTP_PROXY
+  unset https_proxy 
+  unset HTTPS_PROXY
+  unset NO_PROXY
+
+}
+
+function irc {
+  open ~/Applications/Linkinus.app
+  stunnel ~/.stunnel/stunnel.conf
+}
+
+function take {
+  mkdir $1
+  cd $1
+}
+
+function gbt() {
+  git checkout --track $2 $1/$2
+}
+
+if [ -f $HOME/.reith_status ]; then
+  REITH_STATUS=`cat ~/.reith_status`
+  if [ $REITH_STATUS = "onreith" ]; then 
+    echo "ON REITH"
+    onreith
+  else 
+    echo "OFF REITH"
+    offreith
+  fi
+fi
